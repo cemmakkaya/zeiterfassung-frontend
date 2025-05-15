@@ -3,13 +3,18 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-stempeln',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatCardModule, RouterModule],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatCardModule,
+    RouterModule // Wichtig für <button routerLink="">
+  ],
   templateUrl: './stempeln.component.html',
   styleUrls: ['./stempeln.component.css'],
-  
 })
 export class StempelnComponent {
   zeiten: (string | null)[] = [null, null, null, null];
