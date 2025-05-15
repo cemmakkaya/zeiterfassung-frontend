@@ -1,1 +1,23 @@
-<p>stempeln works!</p>
+<div class="stamp-container">
+  <button mat-raised-button color="primary" class="stamp-button" (click)="stempeln()">
+    STAMP
+  </button>
+
+  <div class="time-row">
+    <div class="time-box">{{ zeiten[0] || '––:––' }}</div>
+    <div class="arrow">→</div>
+    <div class="time-box">{{ zeiten[1] || '––:––' }}</div>
+  </div>
+
+  <div class="lunch-box">Lunch {{ pause }}</div>
+
+  <div class="time-row">
+    <div class="time-box">{{ zeiten[2] || '––:––' }}</div>
+    <div class="arrow">→</div>
+    <div class="time-box">{{ zeiten[3] || '––:––' }}</div>
+  </div>
+
+  <button mat-raised-button color="accent" class="history-button" [routerLink]="['/history']">
+    History
+</button>
+</div>

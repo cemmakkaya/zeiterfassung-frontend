@@ -1,14 +1,19 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
-  standalone: true,
   selector: 'app-history',
-  template: `
-    <h2>📋 History</h2>
-    <ul>
-      <li>08.05.2025 - 08:00 - eingestempelt</li>
-      <li>08.05.2025 - 16:30 - ausgestempelt</li>
-    </ul>
-  `
+  standalone: true,
+  imports: [CommonModule, MatCardModule, MatListModule],
+  templateUrl: './history.component.html',
+  styleUrls: ['./history.component.css']
 })
-export class HistoryComponent {}
+export class HistoryComponent {
+  stempelHistory = [
+    { start: '08:00', stop: '12:00', pause: '30 min', resumed: '12:30', end: '16:42' },
+    { start: '09:10', stop: '12:15', pause: '45 min', resumed: '13:00', end: '17:00' },
+    // weitere Testdaten ...
+  ];
+}

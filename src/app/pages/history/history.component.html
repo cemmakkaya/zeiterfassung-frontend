@@ -1,1 +1,14 @@
-<p>history works!</p>
+<mat-card class="history-card">
+  <h2>Stempelverlauf</h2>
+  <mat-list>
+    <mat-list-item *ngFor="let eintrag of stempelHistory">
+      <p>
+        <strong>Start:</strong> {{ eintrag.start }} |
+        <strong>Pause ab:</strong> {{ eintrag.stop }} |
+        <strong>Pause:</strong> {{ eintrag.pause }} |
+        <strong>Weiter:</strong> {{ eintrag.resumed }} |
+        <strong>Ende:</strong> {{ eintrag.end }}
+      </p>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
