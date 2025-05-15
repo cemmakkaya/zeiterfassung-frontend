@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -7,6 +7,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { NgIf } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
+import { AuthButtonComponent } from './auth-button/auth-button.component';
+
 
 @Component({
   selector: 'app-root',
@@ -21,6 +25,7 @@ import { NgIf } from '@angular/common';
     MatListModule,
     MatIconModule,
     MatButtonModule,
+    AuthButtonComponent,
     MatDividerModule
   ]
 })
@@ -30,8 +35,13 @@ export class AppComponent {
   showNavigation(): boolean {
     return this.router.url === '/home';
   }
+  
+  private platformId = inject(PLATFORM_ID);
 
   isHandset(): boolean {
-    return window.innerWidth < 768;
+    if (isPlatformBrowser(this.platformId)) {
+      return window.innerWidth < 768;
+    }
+    return false; 
   }
 }

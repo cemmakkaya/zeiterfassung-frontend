@@ -26,6 +26,16 @@
   margin: 0 0 1.5rem 0;
 }
 
+.back-button-container {
+  position: relative;
+  padding: 1rem 2rem 0.5rem;
+}
+
+.back-button-container button {
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
 .filter-controls {
   display: flex;
   flex-direction: column;

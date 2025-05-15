@@ -57,17 +57,14 @@ export class HistoryComponent implements OnInit {
   dataSource: StempelEintrag[] = [];
   filteredData: StempelEintrag[] = [];
   
-  // Pagination settings
   pageSize = 10;
   pageSizeOptions = [5, 10, 25, 50];
   pageIndex = 0;
   
-  // Filter values
   filterMonth: number | null = null;
   filterYear: number = new Date().getFullYear();
   
   constructor() {
-    // Beispieldaten generieren
     this.generateExampleData();
   }
   
@@ -76,19 +73,15 @@ export class HistoryComponent implements OnInit {
   }
   
   generateExampleData() {
-    // Aktuelle Datum für realistischere Beispieldaten
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth();
     
-    // Generiere Daten für die letzten 60 Tage
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 1; i++) {
       const date = new Date(currentYear, currentMonth, currentDate.getDate() - i);
       
-      // Keine Einträge für Wochenenden
       if (date.getDay() === 0 || date.getDay() === 6) continue;
       
-      // Zufällige Zeiten für realistische Variationen
       const startHour = 8 + Math.floor(Math.random() * 2);
       const startMin = Math.floor(Math.random() * 30);
       const pauseStart = `12:${Math.floor(Math.random() * 15)}`;
@@ -101,7 +94,6 @@ export class HistoryComponent implements OnInit {
       const endHour = 16 + Math.floor(Math.random() * 2);
       const endMin = Math.floor(Math.random() * 59);
       
-      // Berechne Arbeitszeit (vereinfacht)
       const totalMinutes = (endHour * 60 + endMin) - (startHour * 60 + startMin) - 
                           (parseInt(pauseDuration.split(' ')[0]));
       const workHours = Math.floor(totalMinutes / 60);
@@ -129,7 +121,6 @@ export class HistoryComponent implements OnInit {
       this.filteredData = [...this.dataSource];
     }
     
-    // Reset pagination when filter changes
     this.pageIndex = 0;
   }
   
@@ -185,7 +176,6 @@ export class HistoryComponent implements OnInit {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
   
-  // Helper-Methoden für die Ansicht
   getMonthName(month: number): string {
     const months = [
       'Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',

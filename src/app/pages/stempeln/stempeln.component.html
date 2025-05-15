@@ -1,23 +1,23 @@
 <div class="stamp-container">
-  <button mat-raised-button color="primary" class="stamp-button">
+  <button mat-raised-button color="primary" class="stamp-button" (click)="stempeln()">
     STAMP
   </button>
 
   <div class="time-row">
-    <div class="time-box">08:00</div>
+    <div class="time-box">{{ zeiten[0] || '--:--' }}</div>
     <div class="arrow">→</div>
-    <div class="time-box">12:00</div>
+    <div class="time-box">{{ zeiten[1] || '--:--' }}</div>
   </div>
 
-  <div class="lunch-box">Lunch 1/2 h.</div>
+  <div class="lunch-box">Pause: {{ pause }}</div>
 
   <div class="time-row">
-    <div class="time-box">12:30</div>
+    <div class="time-box">{{ zeiten[2] || '--:--' }}</div>
     <div class="arrow">→</div>
-    <div class="time-box">16:42</div>
+    <div class="time-box">{{ zeiten[3] || '--:--' }}</div>
   </div>
 
-  <button mat-raised-button color="accent" class="history-button">
+  <a mat-raised-button color="accent" class="history-button" routerLink="/history">
     View History
-  </button>
+  </a>
 </div>

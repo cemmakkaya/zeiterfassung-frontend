@@ -1,26 +1,38 @@
 <!-- Nur anzeigen, wenn auf /home -->
 <ng-container *ngIf="showNavigation(); else showContentOnly">
-  <mat-sidenav-container style="min-height: 100vh">
-    <mat-sidenav #drawer [mode]="isHandset() ? 'over' : 'side'" [opened]="!isHandset()">
-      <mat-nav-list>
-        <a mat-list-item routerLink="/home" routerLinkActive="active" (click)="isHandset() ? drawer.close() : null">Home</a>
-        <a mat-list-item routerLink="/stempeln" routerLinkActive="active" (click)="isHandset() ? drawer.close() : null">Stempeln</a>
-        <a mat-list-item routerLink="/history" routerLinkActive="active" (click)="isHandset() ? drawer.close() : null">History</a>
-        <a mat-list-item routerLink="/admin" routerLinkActive="active" (click)="isHandset() ? drawer.close() : null">Admin</a>
-        <mat-divider></mat-divider>
-        <a mat-list-item routerLink="/login" routerLinkActive="active" (click)="isHandset() ? drawer.close() : null">Login</a>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+      #drawer
+      [mode]="isHandset() ? 'over' : 'side'"
+      [opened]="!isHandset()"
+      class="sidenav"
+    >
+      <mat-toolbar color="primary" class="sidenav-header">Menü</mat-toolbar>
+      <mat-nav-list class="home-grid">
+        <a  class="box big" mat-list-item routerLink="/stempeln" routerLinkActive="active" (click)="isHandset() ? drawer.close() : null">
+          <mat-icon>access_time</mat-icon>
+          <span>Stempeln</span>
+        </a>
+        <a class="box small" mat-list-item routerLink="/history" routerLinkActive="active" (click)="isHandset() ? drawer.close() : null">
+          <mat-icon>history</mat-icon>
+          <span>History</span>
+        </a>
+        <a class="box small" mat-list-item routerLink="/login" routerLinkActive="active" (click)="isHandset() ? drawer.close() : null">
+          <mat-icon>login</mat-icon>
+          <span>Login</span>
+        </a>
       </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <mat-toolbar color="primary">
+      <mat-toolbar color="primary" class="main-toolbar">
         <button *ngIf="isHandset()" mat-icon-button (click)="drawer.toggle()">
           <mat-icon>menu</mat-icon>
         </button>
         <span>Zeiterfassung</span>
       </mat-toolbar>
 
-      <div class="content">
+      <div class="main-content">
         <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content>
@@ -30,4 +42,5 @@
 <!-- Wenn NICHT auf /home -->
 <ng-template #showContentOnly>
   <router-outlet></router-outlet>
+  <app-auth-button />
 </ng-template>

@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     MatButtonModule,
     MatCardModule,
-    RouterModule // Wichtig für <button routerLink="">
+    RouterModule 
   ],
   templateUrl: './stempeln.component.html',
   styleUrls: ['./stempeln.component.css'],
